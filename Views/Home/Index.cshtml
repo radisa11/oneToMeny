@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Roster</h1>
+    <div class="row">
+        <div class="col-6">
+            <h2></h2>
+            <partial name="_TeacherForm"/>
+            <partial name="_StudentForm"/>
+        </div>
+        <div class="col-6">
+            <h2>All Teachers</h2>
+            @{
+                foreach(Teacher a in ViewBag.AllTeachers){
+                    <h4 class="text-success">Instruktor : @a.Name - @a.Course</h4>
+                    
+                        <ul>
+                            @foreach(Student s in a.MyStudent)   
+                        {
+                            <li>@s.Name</li>
+                        }
+                        </ul>
+                }
+            }
+        </div>
+    </div>
+</div>
